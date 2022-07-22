@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Lugar" table="Lugar">
+		<id name="idLugar" column="idLugar" >
+			<generator class="identity"/>
+		</id>
+		<property name="lugar" column="lugar" type="string"/>
+		
+
+		<joined-subclass name="datos.Ubicacion" table="Ubicacion">
+			<key column="idUbicacion"/> 	
+			<property name="longitud" column="longitud" type="int"/>
+			<property name="latitud" column="latitud" type="int"/>
+			
+		</joined-subclass>
+		<joined-subclass name="datos.Localidad" table="Localidad">
+			<key column="idLocalidad"/>
+
+			<property name="codPostal" column="codPostal" type="string"/>
+			<property name="cumplirCuarentena" column="cumplirCuarentena" type="boolean"/>
+		</joined-subclass>
+		
+
+		
+	</class>
+</hibernate-mapping>
